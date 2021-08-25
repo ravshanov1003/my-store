@@ -1,10 +1,16 @@
 const fs = require('fs')
 const uuid = require('uuid')
-const express = require('express')
 
-const products = require('../data.json')
+const Product = require('../Models/storeModel')
 
-const app = express()
+async function getProducts(req, res) {
+    try {
+        const products = await Product.findAll()
+        res.send(products)
+    } catch (err) {
+        console.log(err)
+    }
+}
 
 const getApiProduct = (req, res) => {
     res.send(products)
@@ -94,6 +100,8 @@ const deleteApiProduct = (req, res) => {
 }
 
 module.exports = {
+    getProducts,
+
     getApiProduct,
     getApiProductById,
     createApiProduct,

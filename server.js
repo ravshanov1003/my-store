@@ -1,13 +1,13 @@
 const express = require('express')
 
-const apiProduct = require('./Controllers/storeController')
+const { getProducts } = require('./Controllers/storeController')
 
 const app = express()
 
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
-app.get('/api/products', apiProduct.getApiProduct)
+app.get('/api/products', getProducts)
 
 // Get product by Id
 app.get('/api/products/:id', apiProduct.getApiProductById)
