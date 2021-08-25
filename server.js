@@ -1,6 +1,6 @@
 const express = require('express')
 
-const { getProducts, getProduct, createProduct } = require('./Controllers/storeController')
+const { getProducts, getProduct, createProduct, updateProduct } = require('./Controllers/storeController')
 
 const app = express()
 
@@ -16,9 +16,9 @@ app.get('/api/products/:id', getProduct)
 app.post('/api/products', createProduct)
 
 // Update product
-app.put('/api/products/:productId', apiProduct.updateApiProduct)
+app.put('/api/products/:productId', updateProduct)
 
 // Delete product
-app.delete("/api/products/:productId", apiProduct.deleteApiProduct)
+//app.delete("/api/products/:productId", apiProduct.deleteApiProduct)
 
 app.listen(3000, _ => console.log('server is running'))
