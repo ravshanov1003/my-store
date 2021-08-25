@@ -1,7 +1,7 @@
 const fs = require('fs')
 const uuid = require('uuid')
 
-const Product = require('../Models/storeModel')
+const Product = require('../Models/productModel')
 
 async function getProducts(req, res) {
     try {
