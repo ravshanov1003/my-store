@@ -1,6 +1,6 @@
 const express = require('express')
 
-const { getProducts, getProduct } = require('./Controllers/storeController')
+const { getProducts, getProduct, createProduct } = require('./Controllers/storeController')
 
 const app = express()
 
@@ -13,7 +13,7 @@ app.get('/api/products', getProducts)
 app.get('/api/products/:id', getProduct)
 
 // Create product
-app.post('/api/products', apiProduct.createApiProduct)
+app.post('/api/products', createProduct)
 
 // Update product
 app.put('/api/products/:productId', apiProduct.updateApiProduct)

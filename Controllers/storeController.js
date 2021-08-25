@@ -22,6 +22,21 @@ async function getProduct(req, res) {
     }
 }
 
+async function createProduct(req, res) {
+    const { name, description, price } = req.body
+    const product = {
+        name,
+        description,
+        price
+    }
+    try {
+        const newProduct = await Product.createProduct(product)
+        res.send(newProduct)
+    } catch (err) {
+        console.log(err)
+    }
+}
+
 const getApiProduct = (req, res) => {
     res.send(products)
 }
@@ -112,6 +127,7 @@ const deleteApiProduct = (req, res) => {
 module.exports = {
     getProducts,
     getProduct,
+    createProduct,
 
     getApiProduct,
     getApiProductById,
