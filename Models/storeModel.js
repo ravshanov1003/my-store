@@ -27,7 +27,7 @@ function create(product) {
         }
     })
     products.push(newProduct)
-    writeDataToFile('../data.json', products)
+    writeDataToFile('./data.json', products)
     resolve(newProduct)
 }
 
@@ -35,8 +35,16 @@ function update(id, product) {
     return new Promise((resolve, reject) => {
         const index = products.findIndex(p => p.id === id)
         products[index] = { id, ...product }
-        writeDataToFile('../data.json', products)
+        writeDataToFile('./data.json', products)
         resolve(1)
+    })
+}
+
+function deleteProduct(id) {
+    return new Promise((resolve, reject) => {
+        products = products.filter(p => p.id !== id)
+        writeDataToFile('./data.json', products)
+        resolve(products)
     })
 }
 
@@ -45,5 +53,5 @@ module.exports = {
     getProduct: findById,
     createProduct: create,
     updateProduct: update,
-
+    deleteProduct
 }

@@ -12,6 +12,7 @@ async function getProducts(req, res) {
     }
 }
 
+// Get product by Id
 async function getProduct(req, res) {
     const { id } = req.params
     const product = await Product.getProduct(id)
@@ -22,6 +23,7 @@ async function getProduct(req, res) {
     }
 }
 
+// Create product
 async function createProduct(req, res) {
     const { name, description, price } = req.body
     const product = {
@@ -37,6 +39,7 @@ async function createProduct(req, res) {
     }
 }
 
+// Update product
 async function updateProduct(req, res) {
     const { id } = req.params
     const { name, description, price } = req.body
@@ -63,20 +66,24 @@ async function updateProduct(req, res) {
     }
 }
 
-const deleteApiProduct = (req, res) => {
-    const { productId } = req.params;
-    const newProduct = products.filter((p) => p.id = productId)
-    fs.writeFile('data.json', JSON.stringify(newProduct, null, 2), "utf-8", (err) => {
-        if (err) {
-            res.send({
-                message: "error in creation"
+// Delete product
+async function deleteProduct(req, res) {
+    const { id } = req.params
+    try {
+        const product = await Product.getProduct(id)
+        if (!product) {
+            res.status(404).send({
+                message: 'Product not found'
             })
         } else {
-            res.status(200).send({
+            await Product.deleteProduct(id)
+            res.send({
                 message: "Product has been deleted"
             })
         }
-    })
+    } catch (e) {
+        console.log(e)
+    }
 }
 
 module.exports = {
@@ -84,6 +91,5 @@ module.exports = {
     getProduct,
     createProduct,
     updateProduct,
-
-    deleteApiProduct,
+    deleteProduct,
 }
