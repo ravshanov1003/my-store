@@ -5,10 +5,20 @@ const Product = require('../Models/storeModel')
 
 async function getProducts(req, res) {
     try {
-        const products = await Product.findAll()
+        const products = await Product.getProducts()
         res.send(products)
     } catch (err) {
         console.log(err)
+    }
+}
+
+async function getProduct(req, res) {
+    const { id } = req.params
+    const product = await Product.getProduct(id)
+    if (!product) {
+        res.status(404).send({
+            message: 'Product not found'
+        })
     }
 }
 
@@ -101,6 +111,7 @@ const deleteApiProduct = (req, res) => {
 
 module.exports = {
     getProducts,
+    getProduct,
 
     getApiProduct,
     getApiProductById,
