@@ -1,12 +1,10 @@
-const { resolveCname } = require('dns')
-const fs = require('fs')
 const { resolve } = require('path')
 const { v4: uuid } = require('uuid')
 
-const products = require('../data.json')
+let products = require('../data.json')
 const { writeDataToFile } = require('../utils')
 
-async function findAll() {
+function findAll() {
     return new Promise((resolve, reject) => {
         resolve(products)
     })
@@ -25,10 +23,11 @@ function create(product) {
             id: uuid(),
             ...product
         }
+        products.push(newProduct)
+        writeDataToFile('./data.json', products)
+        resolve(newProduct)
     })
-    products.push(newProduct)
-    writeDataToFile('./data.json', products)
-    resolve(newProduct)
+
 }
 
 function update(id, product) {
