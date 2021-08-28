@@ -5,8 +5,8 @@ const {
     getProduct,
     createProduct,
     updateProduct
-} = require("../Controllers/productController")
-const { deleteProduct } = require('../Models/productModel')
+} = require("../controllers/productController")
+const { deleteProduct } = require('../models/productModel')
 
 const router = Router()
 
