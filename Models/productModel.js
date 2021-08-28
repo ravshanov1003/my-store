@@ -1,7 +1,7 @@
 const { resolve } = require('path')
 const { v4: uuid } = require('uuid')
 
-let products = require('../data.json')
+let products = require('../data/data.json')
 const { writeDataToFile } = require('../utils')
 
 function findAll() {

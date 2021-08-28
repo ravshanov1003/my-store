@@ -6,8 +6,9 @@ async function login(req, res) {
     const secret = 'secret'
     const { username, password } = req.body
 
+    console.log(req.body)
     try {
-        const user = await User.findUser(username)
+        let user = await User.findUser(username)
         if (!user) {
             res.status(400).send({ message: 'Login is incorrect' })
         }
@@ -16,6 +17,7 @@ async function login(req, res) {
         if (!isMatch) {
             res.status(400).send({ message: 'Password is incorrect' })
         }
+        console.log('error')
 
         const token = jwt.sign({ userId: user.id, username: username }, secret, { expiresIn: '1d' })
         res.status(200).send({
