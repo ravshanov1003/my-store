@@ -1,12 +1,12 @@
 [{
-        "id": 1,
+        "id": "1",
         "fullName": "John Doe",
         "age": 25,
         "username": "john",
         "password": "password"
     },
     {
-        "id": 2,
+        "id": "2",
         "fullName": "Harry Potter",
         "age": 20,
         "username": "harry",

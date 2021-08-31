@@ -1,0 +1,19 @@
+[
+  {
+    "id": "1",
+    "fullName": "John Doe",
+    "age": 25,
+    "username": "john",
+    "password": "password"
+  },
+  {
+    "id": "2",
+    "fullName": "Harry Potter",
+    "age": 20,
+    "username": "harry",
+    "password": "password123"
+  },
+  {
+    "id": "14369404-4c80-4b23-a6c6-9e8b803b17d5"
+  }
+]
