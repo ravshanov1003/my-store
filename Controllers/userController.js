@@ -63,11 +63,23 @@ async function updateUser(req, res) {
         res.send({
             message: 'User updated'
         })
-
     } catch (error) {
         console.log(error)
     }
+}
 
+async function deleteUser(req, res) {
+    const { id } = req.params
+    try {
+        const user = await User.readById(id)
+        notFound(user)
+        await User.deleteU(id)
+        res.send({
+            message: 'User has been deleted'
+        })
+    } catch (error) {
+        console.log(error)
+    }
 }
 
 module.exports = {
@@ -75,4 +87,5 @@ module.exports = {
     getUser,
     createUser,
     updateUser,
+    deleteUser
 }

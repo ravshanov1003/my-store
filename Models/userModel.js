@@ -1,7 +1,7 @@
 const { response } = require('express')
 const { v4: uuid } = require('uuid')
 
-const users = require('../data/users.json')
+let users = require('../data/users.json')
 const { writeDataToFile } = require('../utils')
 
 const read = () => {
@@ -23,7 +23,7 @@ const create = (user) => {
             id: uuid(),
             ...user
         }
-        users.push(newUser)
+        users = users.push(newUser)
         writeDataToFile('./users.json', users)
         resolve(newUser)
     })
@@ -38,9 +38,18 @@ const update = (id, user) => {
     })
 }
 
+const deleteU = (id) => {
+    return new Promise((resolve, reject) => {
+        const user = users.find(p => p.id === id)
+        writeDataToFile('./users.json', user)
+        resolve(user)
+    })
+}
+
 module.exports = {
     read,
     readById,
     create,
-    update
+    update,
+    deleteU
 }
