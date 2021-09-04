@@ -43,7 +43,7 @@ async function createUser(req, res) {
         const newUser = await User.create(user)
         res.send(newUser)
     } catch (e) {
-
+        console.log(e)
     }
 }
 

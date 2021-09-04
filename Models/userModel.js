@@ -24,7 +24,7 @@ const create = (user) => {
             ...user
         }
         users.push(newUser)
-        writeDataToFile('../users.json', newUser)
+        writeDataToFile('./users.json', users)
         resolve(newUser)
     })
 }
@@ -33,7 +33,8 @@ const update = (id, user) => {
     return new Promise((resolve, reject) => {
         const index = users.find(p => p.id === id)
         users[index] = { id, ...user }
-        resolve(users)
+        writeDataToFile('./users.json', users)
+        resolve(1)
     })
 }
 
