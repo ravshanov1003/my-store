@@ -14,6 +14,10 @@
     "password": "password123"
   },
   {
-    "id": "14369404-4c80-4b23-a6c6-9e8b803b17d5"
+    "id": "4c875f32-e8c5-40c6-a40f-a628f1c623cc",
+    "fullName": "Jack Richer",
+    "age": 40,
+    "username": "jack",
+    "password": "123"
   }
 ]

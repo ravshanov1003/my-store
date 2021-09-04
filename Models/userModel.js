@@ -4,7 +4,7 @@ const { v4: uuid } = require('uuid')
 const users = require('../data/users.json')
 const { writeDataToFile } = require('../utils')
 
-const read = _ => {
+const read = () => {
     return new Promise((resolve, reject) => {
         resolve(users)
     })
@@ -24,13 +24,22 @@ const create = (user) => {
             ...user
         }
         users.push(newUser)
-        writeDataToFile('./users.json', users)
+        writeDataToFile('../users.json', newUser)
         resolve(newUser)
+    })
+}
+
+const update = (id, user) => {
+    return new Promise((resolve, reject) => {
+        const index = users.find(p => p.id === id)
+        users[index] = { id, ...user }
+        resolve(users)
     })
 }
 
 module.exports = {
     read,
     readById,
-    create
+    create,
+    update
 }
