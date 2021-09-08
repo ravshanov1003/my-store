@@ -4,6 +4,13 @@ const { v4: uuid } = require('uuid')
 let users = require('../data/users.json')
 const { writeDataToFile } = require('../utils')
 
+async function findUser(username) {
+    return new Promise((resolve, reject) => {
+        const user = users.find(u => u.username === username)
+        resolve(user)
+    })
+}
+
 const read = () => {
     return new Promise((resolve, reject) => {
         resolve(users)
@@ -17,15 +24,11 @@ const readById = (id) => {
     })
 }
 
-const create = (user) => {
+async function createUser(user) {
     return new Promise((resolve, reject) => {
-        let newUser = {
-            id: uuid(),
-            ...user
-        }
-        users = users.push(newUser)
-        writeDataToFile('./users.json', users)
-        resolve(newUser)
+        users.push(user)
+        writeDataToFile('./data/users.json', users)
+        resolve(user)
     })
 }
 
@@ -33,7 +36,7 @@ const update = (id, user) => {
     return new Promise((resolve, reject) => {
         const index = users.find(p => p.id === id)
         users[index] = { id, ...user }
-        writeDataToFile('./users.json', users)
+        writeDataToFile('./data/users.json', users)
         resolve(1)
     })
 }
@@ -49,7 +52,8 @@ const deleteU = (id) => {
 module.exports = {
     read,
     readById,
-    create,
+    createUser,
     update,
-    deleteU
+    deleteU,
+    findUser
 }

@@ -1,15 +1,23 @@
-[{
-        "id": "1",
-        "fullName": "John Doe",
-        "age": 25,
-        "username": "john",
-        "password": "password"
-    },
-    {
-        "id": "2",
-        "fullName": "Harry Potter",
-        "age": 20,
-        "username": "harry",
-        "password": "password123"
-    }
+[
+  {
+    "id": "1",
+    "fullName": "John Doe",
+    "age": 25,
+    "username": "john",
+    "password": "password"
+  },
+  {
+    "id": "2",
+    "fullName": "Harry Potter",
+    "age": 20,
+    "username": "harry",
+    "password": "password123"
+  },
+  {
+    "id": "74a2e41d-ec95-4ce1-93db-04e02733dde3",
+    "fullName": "Tom Holland",
+    "age": 24,
+    "username": "tom",
+    "password": "$2a$12$Y87STBDDdPct1VR3SR3nn.frdznrOQSdBMvSijBUfBhbqnTrDSSf."
+  }
 ]

@@ -1,6 +1,7 @@
-const { response } = require('express')
+const bcrypt = require('bcryptjs')
+const { v4: uuid } = require('uuid')
+
 const User = require('../models/userModel')
-const { writeDataToFile } = require('../utils')
 
 async function notFound(user) {
     if (!user) {
@@ -32,18 +33,27 @@ async function getUser(req, res) {
 }
 
 async function createUser(req, res) {
-    const { fullName, age, username, password } = req.body
-    let user = {
-        fullName,
-        age,
-        username,
-        password
-    }
-    try {
-        const newUser = await User.create(user)
-        res.send(newUser)
-    } catch (e) {
-        console.log(e)
+    console.log(req.user);
+    const { fullName, age, username, password, role } = req.body
+    const checkUser = await User.findUser(username)
+    if (checkUser) {
+        res.status(400).send({
+            message: `${username} already exists`
+        })
+    } else {
+        const hashedPassword = await bcrypt.hash(password, 12)
+        const newUser = {
+            id: uuid(),
+            fullName,
+            age,
+            username,
+            password: hashedPassword,
+            role
+        }
+        await User.createUser(newUser)
+        res.send({
+            message: 'User has been created'
+        })
     }
 }
 
