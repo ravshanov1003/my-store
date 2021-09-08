@@ -4,20 +4,31 @@
     "fullName": "John Doe",
     "age": 25,
     "username": "john",
-    "password": "password"
+    "password": "password",
+    "role": "0"
   },
   {
     "id": "2",
     "fullName": "Harry Potter",
     "age": 20,
     "username": "harry",
-    "password": "password123"
+    "password": "password123",
+    "role": "1"
   },
   {
     "id": "74a2e41d-ec95-4ce1-93db-04e02733dde3",
     "fullName": "Tom Holland",
     "age": 24,
     "username": "tom",
-    "password": "$2a$12$Y87STBDDdPct1VR3SR3nn.frdznrOQSdBMvSijBUfBhbqnTrDSSf."
+    "password": "$2a$12$Y87STBDDdPct1VR3SR3nn.frdznrOQSdBMvSijBUfBhbqnTrDSSf.",
+    "role": "0"
+  },
+  {
+    "id": "53d95fb1-2776-40bb-a2f5-a6f8967fae9f",
+    "fullName": "Jack Richard",
+    "age": 54,
+    "username": "jack",
+    "password": "$2a$12$n/8z58yD.q6TDdbgUKx8NeB6rr7YSlp.r34n/9Jwo6iCJuTB8yFjm",
+    "role": "0"
   }
 ]

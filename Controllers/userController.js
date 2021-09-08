@@ -35,25 +35,29 @@ async function getUser(req, res) {
 async function createUser(req, res) {
     console.log(req.user);
     const { fullName, age, username, password, role } = req.body
-    const checkUser = await User.findUser(username)
-    if (checkUser) {
-        res.status(400).send({
-            message: `${username} already exists`
-        })
-    } else {
-        const hashedPassword = await bcrypt.hash(password, 12)
-        const newUser = {
-            id: uuid(),
-            fullName,
-            age,
-            username,
-            password: hashedPassword,
-            role
+    try {
+        const checkUser = await User.findUser(username)
+        if (checkUser) {
+            res.status(400).send({
+                message: `${username} already exists`
+            })
+        } else {
+            const hashedPassword = await bcrypt.hash(password, 12)
+            const newUser = {
+                id: uuid(),
+                fullName,
+                age,
+                username,
+                password: hashedPassword,
+                role
+            }
+            await User.createUser(newUser)
+            res.send({
+                message: 'User has been created'
+            })
         }
-        await User.createUser(newUser)
-        res.send({
-            message: 'User has been created'
-        })
+    } catch (error) {
+        console.log(error)
     }
 }
 
@@ -67,12 +71,13 @@ async function updateUser(req, res) {
             fullName: fullName || user.fullName,
             age: age || user.age,
             username: username || user.username,
-            password: password || user.password
+            password: password || user.password,
+            role: role || user.role
         }
         let updatedUser = await User.update(id, userData)
         res.send({
             message: 'User updated'
-        })
+        }, updatedUser)
     } catch (error) {
         console.log(error)
     }
