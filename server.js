@@ -13,6 +13,6 @@ app.use(express.json())
 
 app.use('/api/products', checkUser, checkPermission('admin'), productRouter)
 app.use('/auth', authRouter)
-app.use('/user', userRouter)
+app.use('/user', checkUser, checkPermission('admin'), userRouter)
 
 app.listen(3000, _ => console.log('server is running'))
