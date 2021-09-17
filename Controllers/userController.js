@@ -63,7 +63,7 @@ async function createUser(req, res) {
 
 async function updateUser(req, res) {
     const { id } = req.params
-    const { fullName, age, username, password } = req.body
+    const { fullName, age, username, password, role } = req.body
     try {
         let user = await User.readById(id)
         notFound(user)
@@ -75,9 +75,7 @@ async function updateUser(req, res) {
             role: role || user.role
         }
         let updatedUser = await User.update(id, userData)
-        res.send({
-            message: 'User updated'
-        }, updatedUser)
+        res.send({ updatedUser })
     } catch (error) {
         console.log(error)
     }

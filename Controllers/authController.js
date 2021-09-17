@@ -17,9 +17,8 @@ async function login(req, res) {
         if (!isMatch) {
             res.status(400).send({ message: 'Password is incorrect' })
         }
-        console.log('error')
 
-        const token = jwt.sign({ userId: user.id, username: username }, secret, { expiresIn: '1d' })
+        const token = jwt.sign({ userId: user.id, username: username, role: user.role }, secret, { expiresIn: '1d' })
         res.status(200).send({
             token: token
         })

@@ -1,7 +1,7 @@
 const checkPermission = (role) => {
     return async(req, res, next) => {
         try {
-            console.log(role);
+            console.log(req.user.role);
             if (req.user.role === role) {
                 next()
             } else {

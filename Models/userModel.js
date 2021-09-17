@@ -34,10 +34,10 @@ async function createUser(user) {
 
 const update = (id, user) => {
     return new Promise((resolve, reject) => {
-        const index = users.find(p => p.id === id)
+        const index = users.findIndex(p => p.id === id)
         users[index] = { id, ...user }
         writeDataToFile('./data/users.json', users)
-        resolve(1)
+        resolve(users[index])
     })
 }
 

@@ -5,7 +5,7 @@
     "age": 25,
     "username": "john",
     "password": "password",
-    "role": "0"
+    "role": "admin"
   },
   {
     "id": "2",
@@ -13,7 +13,7 @@
     "age": 20,
     "username": "harry",
     "password": "password123",
-    "role": "1"
+    "role": "seller"
   },
   {
     "id": "74a2e41d-ec95-4ce1-93db-04e02733dde3",
@@ -21,7 +21,7 @@
     "age": 24,
     "username": "tom",
     "password": "$2a$12$Y87STBDDdPct1VR3SR3nn.frdznrOQSdBMvSijBUfBhbqnTrDSSf.",
-    "role": "0"
+    "role": "admin"
   },
   {
     "id": "53d95fb1-2776-40bb-a2f5-a6f8967fae9f",
@@ -29,6 +29,14 @@
     "age": 54,
     "username": "jack",
     "password": "$2a$12$n/8z58yD.q6TDdbgUKx8NeB6rr7YSlp.r34n/9Jwo6iCJuTB8yFjm",
-    "role": "0"
+    "role": "seller"
+  },
+  {
+    "id": "eebc602d-e382-4ae1-9b7b-763ae832c20c",
+    "fullName": "Ann Cruise",
+    "age": 45,
+    "username": "ann",
+    "password": "$2a$12$tKXjjXiKBdZDsp8ijYKVVufnvru.cTC61eRPssUnH//M95KZjJcwS",
+    "role": "seller"
   }
 ]

@@ -35,7 +35,7 @@ function update(id, product) {
         const index = products.findIndex(p => p.id === id)
         products[index] = { id, ...product }
         writeDataToFile('./data.json', products)
-        resolve(1)
+        resolve(products[index])
     })
 }
 
